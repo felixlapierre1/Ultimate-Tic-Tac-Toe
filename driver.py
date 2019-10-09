@@ -6,23 +6,6 @@ import signal
 from game import Game
 
 
-@contextmanager
-def timeout(time):
-    # Register a function to raise a TimeoutError on the signal.
-    signal.signal(signal.SIGALRM, raise_timeout)
-    # Schedule the signal to be sent after ``time``.
-    signal.alarm(time)
-
-    try:
-        yield
-    except TimeoutError:
-        pass
-    finally:
-        # Unregister the signal so it won't be triggered
-        # if the timeout is not reached.
-        signal.signal(signal.SIGALRM, signal.SIG_IGN)
-
-
 def raise_timeout(signum, frame):
     raise TimeoutError
 
@@ -66,19 +49,18 @@ if __name__ == "__main__":
 
         timed_out = True
         # Validate player's move
-        with timeout(TIME_OUT_TIME):
-            while True:
-                player_move = bots[game.player_turn].move()
-                if player_move[0] not in forced_move:
-                    continue
+        while True:
+            player_move = bots[game.player_turn].move()
+            if player_move[0] not in forced_move:
+                continue
 
-                try:
-                    if game.make_move(*player_move):
-                        forced_move = game.next_tile
-                        break
-                except Exception:
-                    print("Invalid move")
-            timed_out = False
+            try:
+                if game.make_move(*player_move):
+                    forced_move = game.next_tile
+                    break
+            except Exception:
+                print("Invalid move")
+        timed_out = False
 
         # Check for win
         if game.check_win(game.board[Game.map_tile[player_move[0]]]):
