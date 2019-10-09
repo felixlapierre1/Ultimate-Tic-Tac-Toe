@@ -12,7 +12,8 @@ import random
 moves = ["NW", "N", "NE", "W", "C", "E", "SW", "S", "SE"]
 
 class bot:
-    def __init__(self):
+    def __init__(self, game):
+        self.game = game
         self.team_name = "BadBean"
 
     def move(self):
