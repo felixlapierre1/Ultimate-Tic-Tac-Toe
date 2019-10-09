@@ -9,9 +9,9 @@ from game import Game
 @contextmanager
 def timeout(time):
     # Register a function to raise a TimeoutError on the signal.
-    signal.signal(signal.SIGALRM, raise_timeout)
+    # signal.signal(signal.SIGALRM, raise_timeout)
     # Schedule the signal to be sent after ``time``.
-    signal.alarm(time)
+    # signal.alarm(time)
 
     try:
         yield
@@ -20,7 +20,8 @@ def timeout(time):
     finally:
         # Unregister the signal so it won't be triggered
         # if the timeout is not reached.
-        signal.signal(signal.SIGALRM, signal.SIG_IGN)
+        pass
+        # signal.signal(signal.SIGALRM, signal.SIG_IGN)
 
 
 def raise_timeout(signum, frame):
@@ -28,7 +29,9 @@ def raise_timeout(signum, frame):
 
 
 if __name__ == "__main__":
-
+    import sys
+    import my_bot
+    print(sys.path)
     parser = argparse.ArgumentParser(description="CS GAMES 2020 AI Tryout")
     parser.add_argument("bot1", type=str, help="filename")
     parser.add_argument("bot2", type=str, help="filename")
@@ -79,7 +82,7 @@ if __name__ == "__main__":
                 except Exception:
                     print("Invalid move")
             timed_out = False
-
+        
         # Check for win
         if game.check_win(game.board[Game.map_tile[player_move[0]]]):
             tick = "X" if game.player_turn == 0 else "O"

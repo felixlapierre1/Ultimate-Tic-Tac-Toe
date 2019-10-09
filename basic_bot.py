@@ -7,18 +7,13 @@ This is the ONLY file you should modify.
 (2) Send this file at the end of the tryout for submission.
 
 """
-import random
 
-moves = ["NW", "N", "NE", "W", "C", "E", "SW", "S", "SE"]
 
 class bot:
     def __init__(self):
-        self.team_name = "BadBean"
+        self.team_name = "Foo"
 
     def move(self):
         "Logic for your bot"
 
-        bigMove = random.randint(0, 8)
-        lilMove = random.randint(0, 8)
-
-        return (moves[bigMove], moves[lilMove])
+        return input("Enter a move (e.g. NW/SE): ").strip().split("/")
