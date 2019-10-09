@@ -14,7 +14,7 @@ class bot:
         self.game = game
         self.team_name = "Foo"
 
-    def move(self,):
+    def move(self):
         "Logic for your bot"
 
         return input("Enter a move (e.g. NW/SE): ").strip().split("/")
