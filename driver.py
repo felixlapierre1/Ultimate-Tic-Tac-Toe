@@ -1,4 +1,5 @@
 import argparse
+import copy
 from contextlib import contextmanager
 import importlib
 import signal
@@ -25,11 +26,11 @@ if __name__ == "__main__":
     bots = list()
     mod = importlib.import_module(args.bot1)
     bot1 = getattr(mod, "bot")
-    bots.append(bot1(game))
+    bots.append(bot1())
 
     mod = importlib.import_module(args.bot2)
     bot2 = getattr(mod, "bot")
-    bots.append(bot2(game))
+    bots.append(bot2())
 
     # Start game
     TIME_OUT_TIME = 1
@@ -37,7 +38,7 @@ if __name__ == "__main__":
         TIME_OUT_TIME = 300
 
     timed_out = False
-    forced_move = game.map_tile.keys()
+    forced_move = list(game.map_tile)
     while True:
 
         # Next player's turn
@@ -52,7 +53,9 @@ if __name__ == "__main__":
         timed_out = True
         # Validate player's move
         while True:
-            player_move = bots[game.player_turn].move()
+            player_move = bots[game.player_turn].move(
+                copy.copy(game.board), copy.copy(forced_move)
+            )
             if player_move[0] not in forced_move:
                 continue
 

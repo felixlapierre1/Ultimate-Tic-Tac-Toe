@@ -12,11 +12,10 @@ import random
 moves = ["NW", "N", "NE", "W", "C", "E", "SW", "S", "SE"]
 
 class bot:
-    def __init__(self, game):
-        self.game = game
+    def __init__(self):
         self.team_name = "BadBean"
 
-    def move(self):
+    def move(self, game, forced_move):
         "Logic for your bot"
 
         bigMove = random.randint(0, 8)
