@@ -10,11 +10,10 @@ This is the ONLY file you should modify.
 
 
 class bot:
-    def __init__(self, game):
-        self.game = game
+    def __init__(self):
         self.team_name = "Foo"
 
-    def move(self):
+    def move(self, game, forced_move):
         "Logic for your bot"
 
         return input("Enter a move (e.g. NW/SE): ").strip().split("/")
