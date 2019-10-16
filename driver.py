@@ -54,7 +54,7 @@ if __name__ == "__main__":
         # Validate player's move
         while True:
             player_move = bots[game.player_turn].move(
-                copy.copy(game.board), copy.copy(forced_move)
+                copy.deepcopy(game.board), copy.copy(forced_move)
             )
             if player_move[0] not in forced_move:
                 continue
