@@ -1,4 +1,8 @@
 # CS Games Tryout: Artificial Intelligence
+
+Our bot is bean_bot.py
+
+# Tryout Instructions
 Welcome to the second tryout for CS Games. Your task for this tryout will be to
 create a bot to win at the game of [Ultimate Tic-Tac-Toe](https://ultimate-t3.herokuapp.com/rules) make sure to get familliar with the rules.
 
