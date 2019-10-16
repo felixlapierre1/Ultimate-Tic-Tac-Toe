@@ -17,7 +17,7 @@ class bot:
     last_move = ("?", "?")
 
     def __init__(self):
-        self.team_name = "BadBean" + str(random.randint(0, 100))
+        self.team_name = "BeanBotV1"
 
     def move(self, game, forced_move):
         "Logic for your bot"
@@ -27,6 +27,8 @@ class bot:
                                   ][self.map_tile[self.last_move[1]]]
 
         # Pick one of the possible big squares at random
+        if len(forced_move) == 0:
+            return ("C", "C")
         bigMove = forced_move[random.randint(0, len(forced_move) - 1)]
 
         # Pick a move in the little square that wins, if we can

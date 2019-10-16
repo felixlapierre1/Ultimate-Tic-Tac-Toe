@@ -13,7 +13,7 @@ moves = ["NW", "N", "NE", "W", "C", "E", "SW", "S", "SE"]
 
 class bot:
     def __init__(self):
-        self.team_name = "BadBean"
+        self.team_name = "RandoBot"
 
     def move(self, game, forced_move):
         "Logic for your bot"
